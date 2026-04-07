@@ -1,180 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-
-    <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@9.3.0/css/mdb.min.css" rel="stylesheet" />
-
-    <style>
-        .container-fluid{
-            display: flex;
-            /* background-color: aqua; */
-            /* width: 80%; */
-            justify-content: space-between;
-        }
-        .first,.second{
-            width: 40%;
-        }
-        
-        .first table {
-            width: 120%;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bolder;
-            margin-top: 5%;
-            box-shadow: 0px 0px 5px 2px rgb(155, 154, 154);
-        }
-        .second table   {
-            border-radius: 5px;
-            width: 60%;
-            gap: 10px;
-            margin-top: 5%;
-            text-align: center;
-            font-weight: bolder;
-            box-shadow: 0px 0px 5px 2px rgb(155, 154, 154);
-        }
-        .second table tr {
-            display: flex;
-            width: 80%;
-            justify-content: space-between;
-            margin-left: 7%;
-        }
-        select{
-            border-radius: 5px;
-        }
-        .first table tr{
-            /* background-color: aqua; */
-            display: inline-block;
-            width: 100%;
-        }
-        .first table tr td{
-            /* background-color: blanchedalmond; */
-            width: 10%;
-            text-align: center;
-            justify-content: space-between;
-        }
-        .sno{
-            /* background-color: aqua !important; */
-            width:3% !important  ;
-            text-align: center;
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@9.3.0/css/mdb.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    
-    <h1 class="container">Expense Tracker</h1><br>
-    <div class="container-fluid">
-        <div class="first">
-            <table>
-                <tr>
-                    <td class="sno">S.no</td>
-                    <td>Name</td>
-                    <td>Amount</td>
-                    <td>Type</td>
-                    <td>Action</td>
-                </tr>
-                <tr id="row"></tr>
-                
-            </table>
-        </div>
-        <div class="second">
-            <table>
-                <tr>
-                    <td><h7>Entry Type</h7></td>
-                    <td>
-                        <select name="" id="option">
-                            <option value="" disabled selected>Choose Type</option>
-                            <option value="Income" >Income</option>
-                            <option value="Fees" >Fees</option>
-                            <option value="My Rent" >My Rent</option>
-                            <option value="Your Rent" >Your Rent</option>
-                        </select>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td>Name</td>
-                    <td><input type="text" id="Name" placeholder="Enter Name"required></td>
-                </tr>
-                <tr>
-                    <td>Amount</td>
-                    <td><input type="number" id="amount" placeholder="0"  required ></td>
-                </tr>
-                <tr>
-                    <td><button onclick="add()" class="btn btn-outline-success">ADD EXPENSE</button></td>
-                </tr>
-            </table>
-        </div>
+  <h1 class="text-center my-4">Expense Tracker</h1>
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="raw">
+
+          </tbody>
+        </table>
+      </div>
     </div>
 
+    <div class="col-md-3">
+      <div class="form">
+        <div>
+          <label class="form-label">Enter Type</label>
+          <select id="type" class="form-select" required>
+            <option value="" disabled selected>Choose Type</option>
+            <option value="Income">Income</option>
+            <option value="Fees">Fees</option>
+            <option value="Rent">Rent</option>
+          </select>
+        </div>
 
+        <div>
+          <label class="form-label">Enter Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Enter Name" required>
+        </div>
 
+        <div>
+          <label class="form-label">Enter Amount</label>
+          <input type="number" placeholder="Enter amount" required class="form-control" id="amount">
+        </div>
 
+        <button class="btn btn-success btn-sm w-100" onclick="addData()">
+          ADD DATA
+        </button>
+      </div>
+    </div>
 
+  </div>
 
-
-
-    <script src="app.js"></script>
-
+  <script src="app.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@9.3.0/js/mdb.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit@9.3.0/css/mdb.min.css" rel="stylesheet" />
-</head>
-
-<body class="container mt-5">
-
-    <div>
-
-        <div>
-            <h1 class="display-5"> TODO LIST</h1>
-        </div>
-
-        <div class="d-flex gap-3">
-            <div class="form-outline" data-mdb-input-init>
-                <input type="text" id="form12" class="form-control" /> 
-                <label class="form-label" for="form12">Enter Todos</label>
-            </div>
-            <button onclick="addTask()" type="button" class="btn btn-outline-primary" data-mdb-ripple-init
-                data-mdb-ripple-color="dark">Add </button>
-        </div>
-
-    </div>
-
-    <hr>
-
-    <ul id="list" class="list-group list-group-light">
-
-    </ul>
-
-
-    <script src="app.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@9.3.0/js/mdb.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-</body>
-
-</html> -->
